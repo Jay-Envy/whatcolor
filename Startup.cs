@@ -50,7 +50,7 @@ namespace WhatColor
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=WhatColor}/{action=Index}/{id?}");
             });
         }
     }
