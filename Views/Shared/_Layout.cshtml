@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model WhatColor.ViewModels.ColorViewModel;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,19 +17,17 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <form asp-controller="WhatColor" asp-action="Search" method="get">
+                <form asp-controller="Color" asp-action="Search" method="get">
                     <div class="form-actions no-color">
-                        <p>
                             Search color:
                             <input asp-for="ColorSearch" />
-                            <input type="submit" value="HEX-code" class="btn btn-default" />
-                        </p>
+                            <input type="submit" value="Search" class="btn btn-default" />
                     </div>
                 </form>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="User">User</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Users">User</a>
                         </li>
                     </ul>
                 </div>

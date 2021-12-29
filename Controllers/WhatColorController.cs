@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WhatColor.ViewModels;
 using WhatColor.Models;
+using WhatColor.Controllers;
 
 namespace WhatColor.Controllers
 {
@@ -22,17 +23,6 @@ namespace WhatColor.Controllers
             return View();
         }
 
-        public IActionResult Search(WhatColorViewModel viewModel)
-        {
-            if (!string.IsNullOrEmpty(viewModel.ColorSearch))
-            {
-                viewModel.Color = color.Where(b => b.Name.Contains(viewModel.ColorSearch)).ToList();
-            }
-            else
-            {
-                viewModel.Color = color;
-            }
-            return View("Index", viewModel);
-        }
+
     }
 }
