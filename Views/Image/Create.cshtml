@@ -1,0 +1,23 @@
+﻿@model WhatColor.ViewModels.ImageViewModel
+
+@{ ViewData["Title"] = "Upload Image"; }
+<!DOCTYPE html>
+<h1>
+    Product toevoegen
+</h1>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <input asp-for="Image" accept="image/" onchange="previewFile()" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group ">
+        <input type="submit" value="Toevoegen" class="btn btn-primary" />
+    </div>
+</form>
+
+<a asp-action="Index">Terug naar overzicht</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

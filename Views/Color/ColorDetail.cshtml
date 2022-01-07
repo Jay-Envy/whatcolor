@@ -1,0 +1,64 @@
+﻿@model WhatColor.ViewModels.ColorDetailViewModel
+
+@{
+    ViewData["Title"] = "Color Detail";
+}
+
+<h2>Color</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th class="col-md-4">
+                Name
+            </th>
+            <th class="col-md-4">
+                HEX
+            </th>
+            <th class="col-md-4">
+                CMYK
+            </th>
+            <th class="col-md-4">
+                RGB
+            </th>
+            <th class="col-md-4">
+                TrendingUrl
+            </th>
+            <th class="col-md-4">
+                ComplementaryHex
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="col-md-4">
+                @Model.ColorID
+            </td>
+            <td class="col-md-4">
+                @Model.Name
+            </td>
+            <td class="col-md-4">
+                #@Model.HEX
+            </td>
+            <td class="col-md-4">
+                @Model.CMYK
+            </td>
+            <td class="col-md-4">
+                @Model.RGB
+            </td>
+            <td class="col-md-4">
+                <a href=@Model.TrendingUrl>
+                    @Model.TrendingUrl
+                </a>
+            </td>
+            <td class="col-md-4">
+                @Model.ComplementaryHex
+            </td>
+            <td>
+                <div style="background-color: #@Model.HEX; height: 50px; width: 150px;" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Back", "Color", "Color")
