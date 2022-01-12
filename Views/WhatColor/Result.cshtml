@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Result page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>this is the result page, where you will receive information about the color.</p>
+    <ul>
+        @for (int i = 0; i < (int)ViewData["Aantal"]; i++)
+        {
+            <li>@ViewData["Message"]</li>
+        }
+    </ul>
+</div>

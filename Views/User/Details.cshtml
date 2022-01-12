@@ -1,0 +1,25 @@
+﻿@model WhatColor.ViewModels.UserDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.UserName</h1>
+
+<p>
+    Id: @Model.Id
+</p>
+
+<p>
+    Username: @Model.UserName
+</p>
+
+<p>
+    Email: @Model.Email
+</p>
+
+<p>
+    Country: @Model.Country
+</p>
+
+@Html.ActionLink("Back", "Users", "User")
