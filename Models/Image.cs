@@ -8,11 +8,6 @@ namespace WhatColor.Models
 {
     public class Image
     {
-        //public int ImageID { get; set; }
-        //public string ImagePath { get; set; }
-        ////public Int64 BLOB { get; set; }
-        //public string FileName { get; set; }
-
         public int ImageID { get; set; }
         public string FileName { get; set; }
         [AllowHtml]

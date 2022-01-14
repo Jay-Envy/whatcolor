@@ -9,13 +9,11 @@ namespace WhatColor.ViewModels
 {
     public class CreateColorViewModel
     {
-        //Enkel HEX en Name zijn required, aangezien de andere variabelen hieruit afgeleid worden.
-        [Required]
+        public int ColorID { get; set; }
         public string HEX { get; set; }
-        [Required]
-        public string Name { get; set; }
         public string CMYK { get; set; }
         public string RGB { get; set; }
+        public string Name { get; set; }
         public string TrendingUrl { get; set; }
         public string ComplementaryHex { get; set; }
         public int ColorCategoryID { get; set; }

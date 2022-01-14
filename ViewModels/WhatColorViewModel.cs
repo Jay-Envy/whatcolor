@@ -10,5 +10,7 @@ namespace WhatColor.ViewModels
     {
         public List<Color> Colors { get; set; }
         public string ColorSearch { get; set; }
+        public User User { get; set; }
+        public Color Color { get; set; }
     }
 }

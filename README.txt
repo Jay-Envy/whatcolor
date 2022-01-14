@@ -20,3 +20,5 @@ Jelle
 
 Test/admin-account: joerisbizarre@dventure.weeb
 Test/admin-password: QuirkyPr0f
+
+//Vraag voor Joeri: ppt 07 - slide 10. Waar komen klant en pizza vandaan? Ik neem aan wegschrijven in de controller.

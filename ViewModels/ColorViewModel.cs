@@ -9,5 +9,6 @@ namespace WhatColor.ViewModels
     public class ColorViewModel
     {
         public List<Color> Colors { get; set; }
+        public string ColorSearch { get; set; }
     }
 }

@@ -3,21 +3,18 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WhatColor.Data;
 
 namespace WhatColor.Migrations
 {
     [DbContext(typeof(WhatColorContext))]
-    [Migration("20220107212311_Categories")]
-    partial class Categories
+    partial class WhatColorContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("WhatColor")
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -185,12 +182,7 @@ namespace WhatColor.Migrations
                     b.Property<string>("TrendingUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ColorID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Color");
                 });
@@ -256,12 +248,7 @@ namespace WhatColor.Migrations
                     b.Property<byte[]>("Img")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ImageID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Image");
                 });
@@ -329,9 +316,6 @@ namespace WhatColor.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -352,9 +336,7 @@ namespace WhatColor.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -408,13 +390,6 @@ namespace WhatColor.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WhatColor.Models.Color", b =>
-                {
-                    b.HasOne("WhatColor.Models.User", null)
-                        .WithMany("Colors")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("WhatColor.Models.ColorHistory", b =>
                 {
                     b.HasOne("WhatColor.Models.Color", "Color")
@@ -430,13 +405,6 @@ namespace WhatColor.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WhatColor.Models.Image", b =>
-                {
-                    b.HasOne("WhatColor.Models.User", null)
-                        .WithMany("Images")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("WhatColor.Models.ImageLibrary", b =>
                 {
                     b.HasOne("WhatColor.Models.User", "User")
@@ -450,13 +418,6 @@ namespace WhatColor.Migrations
                         .HasForeignKey("ImageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WhatColor.Models.User", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
                 });
 #pragma warning restore 612, 618
         }

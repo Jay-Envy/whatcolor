@@ -2,7 +2,7 @@
 
 namespace WhatColor.Migrations
 {
-    public partial class dbAttached : Migration
+    public partial class ChangeUp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

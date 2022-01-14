@@ -28,8 +28,11 @@ namespace WhatColor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<WhatColorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WhatColorConnection")));
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<WhatColorContext>();
+            services.AddDbContext<WhatColorContext>(options => options
+            .UseSqlServer(Configuration.GetConnectionString("WhatColorConnection")));
+            services.AddDefaultIdentity<User>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<WhatColorContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -53,7 +56,7 @@ namespace WhatColor
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +84,29 @@ namespace WhatColor
                     pattern: "{controller=WhatColor}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            CreateRoles(serviceProvider).Wait();
+        }
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            WhatColorContext context = serviceProvider.GetRequiredService<WhatColorContext>();
+
+            IdentityResult result;
+
+            bool roleCheck = await roleManager.RoleExistsAsync("user");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("user"));
+            }
+
+            roleCheck = await roleManager.RoleExistsAsync("admin");
+            if (!roleCheck)
+            {
+                result = await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+
+            context.SaveChanges();
         }
     }
 }

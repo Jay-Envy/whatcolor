@@ -2,7 +2,7 @@
 
 namespace WhatColor.Migrations
 {
-    public partial class Categories : Migration
+    public partial class AddRoles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

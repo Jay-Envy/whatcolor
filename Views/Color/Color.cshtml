@@ -4,25 +4,13 @@
     <thead>
         <tr>
             <th class="col-md-4">
-                @Html.DisplayNameFor(model => model.Colors[0].ColorID)
+                &nbsp;
             </th>
             <th class="col-md-4">
                 @Html.DisplayNameFor(model => model.Colors[0].Name)
             </th>
             <th class="col-md-4">
                 @Html.DisplayNameFor(model => model.Colors[0].HEX)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayNameFor(model => model.Colors[0].CMYK)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayNameFor(model => model.Colors[0].RGB)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayNameFor(model => model.Colors[0].TrendingUrl)
-            </th>
-            <th class="col-md-4">
-                @Html.DisplayNameFor(model => model.Colors[0].ComplementaryHex)
             </th>
         </tr>
     </thead>
@@ -31,25 +19,13 @@
         {
             <tr>
                 <td class="col-md-4">
-                    @item.ColorID
+                    <div a asp-action="ColorDetail" style="background-color: #@item.HEX; height: 50px; width: 150px;" />
                 </td>
                 <td class="col-md-4">
                     @item.Name
                 </td>
                 <td class="col-md-4">
                     @item.HEX
-                </td>
-                <td class="col-md-4">
-                    @item.CMYK
-                </td>
-                <td class="col-md-4">
-                    @item.RGB
-                </td>
-                <td class="col-md-4">
-                    @item.TrendingUrl
-                </td>
-                <td class="col-md-4">
-                    @item.ComplementaryHex
                 </td>
             </tr>
         }

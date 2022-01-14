@@ -18,12 +18,10 @@ namespace WhatColor.Controllers
     public class ColorController : Controller
     {
         private readonly WhatColorContext _context;
-        //public List<Color> colors;
         public List<ColorCategory> ColorCategories;
 
         public ColorController(WhatColorContext context)
         {
-            //colors = new List<Color>();
             _context = context;
         }
 
@@ -34,6 +32,27 @@ namespace WhatColor.Controllers
                 Colors = _context.Colors.ToList()
             };
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> ColorDetail(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var color = await _context.Colors.FindAsync(id);
+            if (color == null)
+                return NotFound();
+
+            ColorDetailViewModel viewModel = new ColorDetailViewModel()
+            {
+                ColorID = color.ColorID,
+                Name = color.Name,
+                CMYK = color.CMYK,
+                HEX = color.HEX,
+                RGB = color.RGB,
+                ComplementaryHex = color.ComplementaryHex,
+                TrendingUrl = color.TrendingUrl
+            }
         }
 
         [Authorize]
@@ -52,14 +71,10 @@ namespace WhatColor.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Kleuren worden berekend door ColorTransformer
-                //string Name = viewModel.Name;
-                //string HEX = viewModel.HEX;
-                //string RGB = Convert.ToInt32(HEX, 16).ToString();
-                //string CMYK = ColorTransformer.GetCMYK(RGB).ToString();
-                //string TrendingUrl = $"https://www.coolors.co/trending/{HEX}";
-                //string ComplementaryHex = ColorTransformer.GetComplementaryHex(RGB);
-
+                //Kleuren zouden berekend worden door ColorTransformer
+                //Met ColorTransformer heb je enkel de naam en de hex-code nodig.
+                //De rest wordt vanuit deze twee properties getransformeerd
+                //**Deze commentaar is verouderd. Ik heb van alle variabelen strings gemaakt (met meer tijd zou ik het (denk ik) uiteindelijk wel werkende gekregen hebben)**
 
                 string Name = viewModel.Name;
                 string HEX = viewModel.HEX;

@@ -11,5 +11,9 @@ namespace WhatColor.Models
     {
         //Andere props komen uit baseklasse IdentityUser
         public string Country { get; set; }
+
+        //Meer op meer
+        public ICollection<ColorHistory> ColorHistories { get; set; }
+        public ICollection<ImageLibrary> ImageLibraries { get; set; }
     }
 }
