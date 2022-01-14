@@ -1,0 +1,15 @@
+﻿@model WhatColor.ViewModels.DeleteColorViewModel
+
+@{ 
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h4>Are you sure you want to delete @Model.Name @Model.HEX?</h4>
+
+<form asp-action="Delete" >
+    <input type="hidden" asp-for="ColorID"/>
+    <input type="submit" value="Delete" class="btn btn-primary"/>
+    <a asp-action="Color">Back to list</a>
+</form>

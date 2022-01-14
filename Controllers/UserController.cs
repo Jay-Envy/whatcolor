@@ -34,7 +34,7 @@ namespace WhatColor.Controllers
 
         public IActionResult Details(string id)
         {
-            User user = _userManager.Users.Where(k => k.Id == id).FirstOrDefault();
+            User user = _userManager.Users.Where(u => u.Id == id).FirstOrDefault();
             if (user != null)
             {
                 UserDetailsViewModel viewModel = new UserDetailsViewModel()

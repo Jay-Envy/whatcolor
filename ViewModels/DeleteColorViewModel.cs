@@ -6,7 +6,7 @@ using WhatColor.Models;
 
 namespace WhatColor.ViewModels
 {
-    public class ColorViewModel
+    public class DeleteColorViewModel
     {
         public int ColorID { get; set; }
         public string HEX { get; set; }
@@ -16,7 +16,6 @@ namespace WhatColor.ViewModels
         public string TrendingUrl { get; set; }
         public string ComplementaryHex { get; set; }
         public int ColorCategoryID { get; set; }
-        public List<Color> Colors { get; set; }
-        public string ColorSearch { get; set; }
+        public List<ColorCategory> ColorCategories { get; set; }
     }
 }

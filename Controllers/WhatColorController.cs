@@ -123,20 +123,6 @@ namespace WhatColor.Controllers
 
             return View(viewModel);
         }
-        [HttpPost]
-        public async Task<IActionResult> Search(WhatColorViewModel viewModel)
-        {
 
-            if (!string.IsNullOrEmpty(viewModel.ColorSearch))
-            {
-                viewModel.Colors = await _context.Colors.Where(b => b.HEX.Contains(viewModel.ColorSearch)).ToListAsync();
-            }
-            else
-            {
-                viewModel.Colors = await _context.Colors.ToListAsync();
-            }
-            return View("Color", viewModel);
-
-        }
     }
 }

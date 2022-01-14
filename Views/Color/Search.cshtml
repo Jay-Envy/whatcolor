@@ -1,6 +1,9 @@
 ﻿@model WhatColor.ViewModels.ColorViewModel
 
-<a asp-action="Create">Create</a>
+@{ ViewData["Title"] = "Color Search"; }
+
+<h2>Color</h2>
+
 <table>
     <thead>
         <tr>
@@ -34,6 +37,9 @@
     <td class="col-md-4">
         <a asp-action="Delete" asp-route-id="@item.ColorID">Delete</a>
     </td>
-</tr>}
+</tr>
+}
     </tbody>
 </table>
+
+@Html.ActionLink("Back", "Color", "Color")
